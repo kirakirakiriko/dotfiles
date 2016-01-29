@@ -23,7 +23,10 @@ map <c-j> <c-w>j
 map <c-h> <c-w>h
 map <c-k> <c-w>k
 map <c-l> <c-w>l
-
+nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
+nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 map <Leader>s :sort<CR>
@@ -44,6 +47,7 @@ filetype plugin indent on
 syntax on
 
 set number
+set relativenumber
 set tw=79
 set nowrap
 set fo-=t
@@ -56,7 +60,7 @@ nmap Q gqap
 set history=700
 set undolevels=700
 
-set tabstop=4
+set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set shiftround
@@ -109,3 +113,11 @@ endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 set nofoldenable
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+
+map <Leader><tab> :TlistToggle<CR>
+
+set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
