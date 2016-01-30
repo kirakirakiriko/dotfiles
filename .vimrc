@@ -1,6 +1,5 @@
 autocmd! bufwritepost .vimrc source %
 
-
 set clipboard=unnamed
 set bs=2
 
@@ -31,13 +30,14 @@ vnoremap > >gv
 syntax on
 filetype off
 filetype plugin indent on
-set t_Co=256
-color molokai
 
 "Mark Unneccessary Whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
+set t_Co=256
+color molokai
 
+set laststatus=2
 "Line numbers
 set number
 set relativenumber
@@ -45,7 +45,7 @@ set tw=79
 set nowrap
 set fo-=t
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
+highlight ColorColumn ctermbg=16
 
 "History and Backup
 set history=700
@@ -122,9 +122,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 map <Leader><tab> :TlistToggle<CR>
 
 " Statusline
-set laststatus=2
 set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
-set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+"set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 " NerdTree
 map <C-n> :NERDTreeToggle<CR>
