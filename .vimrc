@@ -1,3 +1,66 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+syntax off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Open Files with fuzzy search
+Plugin 'kien/ctrlp.vim'
+" Configurable context sensitive Statusline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" PluginCollection for python developement
+Plugin 'klen/python-mode'
+" Outine variable and functions
+Plugin 'taglist.vim'
+" Insane git integration
+Plugin 'tpope/vim-fugitive'
+" Browse files on your system
+Plugin 'scrooloose/nerdtree'
+" Work with 'surroundings'
+Plugin 'tpope/vim-surround'
+" Repeat functions provided by plugins
+Plugin 'tpope/vim-repeat'
+" Snippets
+Plugin 'SirVer/ultisnips'
+" Code Snippets for HTML
+Plugin 'mattn/emmet-vim'
+" HTML5 Syntax
+Plugin 'othree/html5.vim'
+" CSS3 Syntax
+Plugin 'hail2u/vim-css3-syntax'
+" Stylus Syntax Highlighting
+Plugin 'wavded/vim-stylus'
+" Snippets for Ultisnips
+Plugin 'honza/vim-snippets'
+" Javascript Syntax
+Plugin 'othree/yajs.vim'
+" Javascript Libraries Syntax
+Plugin 'othree/javascript-libraries-syntax.vim'
+" Nerdtree Git Flags
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" Python Unit Testing with py.test
+Plugin 'alfredodeza/pytest.vim'
+
+" ColorSchemes
+Plugin 'sickill/vim-monokai'
+Plugin 'baskerville/bubblegum'
+
+call vundle#end()
+filetype plugin indent on
+
+
+" Configure Airline
+let g:airline_powerline_fonts = 1
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_theme = 'bubblegum'
 autocmd! bufwritepost .vimrc source %
 
 set clipboard=unnamed
@@ -28,8 +91,6 @@ vnoremap > >gv
 
 "Syntax Highlighting & Colors
 syntax on
-filetype off
-filetype plugin indent on
 
 "Mark Unneccessary Whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -74,8 +135,6 @@ nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
-
-call pathogen#infect()
 
 set wildignore+=node_modules
 set ruler
@@ -122,7 +181,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 map <Leader><tab> :TlistToggle<CR>
 
 " Statusline
-set rtp+=$HOME/.local/lib/python2.7/site-packages/powerline/bindings/vim/
 "set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 " NerdTree
