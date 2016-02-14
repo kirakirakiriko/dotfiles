@@ -45,6 +45,9 @@ Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
 Plugin 'alfredodeza/pytest.vim'
+" Force PEP8 Format for Python files
+Plugin 'tell-k/vim-autopep8'
+
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -88,6 +91,8 @@ map <Leader>s :sort<CR>
 
 vnoremap < <gv
 vnoremap > >gv
+vnoremap . :normal .<CR>
+map <C-c> :nohl<CR>
 
 "Syntax Highlighting & Colors
 syntax on
@@ -140,7 +145,7 @@ set wildignore+=node_modules
 set ruler
 
 "Emmet
-let g:user_emmet_leader_key='<tab>'
+"let g:user_emmet_leader_key='<tab>'
 
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
@@ -179,6 +184,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 
 " Taglist
 map <Leader><tab> :TlistToggle<CR>
+let Tlist_Use_Right_Window = 1
 
 " Statusline
 "set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
