@@ -47,6 +47,9 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'alfredodeza/pytest.vim'
 " Force PEP8 Format for Python files
 Plugin 'tell-k/vim-autopep8'
+" Smooth Scrolling
+Plugin 'terryma/vim-smooth-scroll'
+
 
 
 " ColorSchemes
@@ -76,10 +79,15 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-noremap   <C-E> 3<C-Y>
-noremap   <C-Y> 3<C-E>
 noremap <Leader>e :quit<CR>
 noremap <Leader>E :qa!<CR>
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-y> :call smooth_scroll#down(5, 0, 1)<CR>
+noremap <silent> <c-e> :call smooth_scroll#up(5, 0, 1)<CR>
+
 
 map <c-j> <c-w>j
 map <c-h> <c-w>h
@@ -190,6 +198,7 @@ let Tlist_Use_Right_Window = 1
 "set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 " NerdTree
-map <C-n> :NERDTreeToggle<CR>
+map <C-a> :NERDTreeToggle<CR>
+let g:ctrlp_map = '<c-o>'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
