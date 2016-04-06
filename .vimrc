@@ -198,7 +198,7 @@ let Tlist_Use_Right_Window = 1
 "set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
 
 " NerdTree
-map <C-a> :NERDTreeToggle<CR>
-let g:ctrlp_map = '<c-o>'
+map <leader>a :NERDTreeToggle<CR>
+let g:ctrlp_map = '<c-a>'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
