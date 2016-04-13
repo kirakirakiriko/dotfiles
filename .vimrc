@@ -101,6 +101,8 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
 map <C-c> :nohl<CR>
+noremap <C-j> :set nonumber<CR> :set norelativenumber<CR>
+noremap <C-k> :set number<CR> :set relativenumber<CR>
 
 "Syntax Highlighting & Colors
 syntax on
