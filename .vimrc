@@ -111,7 +111,7 @@ syntax on
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 set t_Co=256
-color molokai
+color monokai
 
 set laststatus=2
 "Line numbers
