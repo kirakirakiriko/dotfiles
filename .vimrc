@@ -49,6 +49,8 @@ Plugin 'alfredodeza/pytest.vim'
 Plugin 'tell-k/vim-autopep8'
 " Smooth Scrolling
 Plugin 'terryma/vim-smooth-scroll'
+" Easy Aligning
+Plugin 'junegunn/vim-easy-align'
 
 
 
@@ -190,6 +192,9 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-v>"
+
+" Alignment
+nmap ga <Plug>(EasyAlign)
 
 " Taglist
 map <Leader><tab> :TlistToggle<CR>
