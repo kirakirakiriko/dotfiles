@@ -27,14 +27,14 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " Snippets
 Plugin 'SirVer/ultisnips'
-" Code Snippets for HTML
-Plugin 'mattn/emmet-vim'
 " HTML5 Syntax
 Plugin 'othree/html5.vim'
 " CSS3 Syntax
 Plugin 'hail2u/vim-css3-syntax'
 " Stylus Syntax Highlighting
 Plugin 'wavded/vim-stylus'
+" Syntax Checking
+Plugin 'scrooloose/syntastic'
 " Snippets for Ultisnips
 Plugin 'honza/vim-snippets'
 " Javascript Syntax
@@ -154,11 +154,10 @@ nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 set wildignore+=node_modules
 set ruler
 
-"Emmet
-"let g:user_emmet_leader_key='<tab>'
 
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
+let g:syntastic_javascript_checkers=['jshint']
 
 "Folding
 set nofoldenable

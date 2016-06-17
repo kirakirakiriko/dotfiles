@@ -1,0 +1,4 @@
+npm install jshint -g
+cp .jshintrc.dist ~/.jshintrc
+mkdir -p ~/.vim/syntax_checkers
+cp -r javascript.vim.dist ~/.vim/syntax_checkers/javascript.vim
