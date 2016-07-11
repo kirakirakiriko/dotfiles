@@ -41,6 +41,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'othree/yajs.vim'
 " Javascript Libraries Syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
+" PHP Omnicompletion
+Plugin 'shawncplus/phpcomplete.vim'
+" Mustache Templating in VimScript
+Plugin 'tobyS/vmustache'
+" PHP Documentation Blocks Generation
+Bundle 'tobyS/pdv'
 " Nerdtree Git Flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
@@ -103,8 +109,12 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
 map <C-c> :nohl<CR>
-noremap <C-j> :set nonumber<CR> :set norelativenumber<CR>
-noremap <C-k> :set number<CR> :set relativenumber<CR>
+"noremap <C-j> :set nonumber<CR> :set norelativenumber<CR>
+"noremap <C-k> :set number<CR> :set relativenumber<CR>
+
+"PHP DocBlocks
+let g:pdy_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+nnoremap <buffer> <C-P> :call pdv#DocumentWithSnip()<CR>
 
 "Syntax Highlighting & Colors
 syntax on
