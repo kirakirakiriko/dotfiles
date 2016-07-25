@@ -27,6 +27,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " Snippets
 Plugin 'SirVer/ultisnips'
+" UltiSnips COmpatibility
+Plugin 'ervandew/supertab'
 " HTML5 Syntax
 Plugin 'othree/html5.vim'
 " CSS3 Syntax
@@ -41,12 +43,6 @@ Plugin 'honza/vim-snippets'
 Plugin 'othree/yajs.vim'
 " Javascript Libraries Syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
-" PHP Omnicompletion
-Plugin 'shawncplus/phpcomplete.vim'
-" Mustache Templating in VimScript
-Plugin 'tobyS/vmustache'
-" PHP Documentation Blocks Generation
-Bundle 'tobyS/pdv'
 " Nerdtree Git Flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
@@ -57,8 +53,15 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'terryma/vim-smooth-scroll'
 " Easy Aligning
 Plugin 'junegunn/vim-easy-align'
-
-
+" AUtocompletion
+Plugin 'Valloric/YouCompleteMe'
+"Typescript
+Plugin 'Quramy/tsuquyomi'
+Plugin 'leafgarland/typescript-vim'
+" Async Process Management
+Plugin 'Shougo/vimproc.vim'
+" Gulp Integration
+Plugin 'KabbAmine/gulp-vim'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -112,10 +115,6 @@ map <C-c> :nohl<CR>
 "noremap <C-j> :set nonumber<CR> :set norelativenumber<CR>
 "noremap <C-k> :set number<CR> :set relativenumber<CR>
 
-"PHP DocBlocks
-let g:pdy_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
-nnoremap <buffer> <C-P> :call pdv#DocumentWithSnip()<CR>
-
 "Syntax Highlighting & Colors
 syntax on
 
@@ -166,13 +165,30 @@ nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 set wildignore+=node_modules
 set ruler
 
+"Folding
+set nofoldenable
+
+"YouCompleteMe Settings
+if !exists("g:ycm_semantic_triggers")
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers['typescript'] = ['.']
+
+"Ultisnips/YCM Settings
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+
+"Gulp Settings
+let g:gv_return_2_prompt = 1
 
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
 let g:syntastic_javascript_checkers=['jshint']
-
-"Folding
-set nofoldenable
 
 "Language-Specific: Python
 map <Leader>g :call RopeGotoDefinition()<CR>
@@ -197,11 +213,6 @@ function! OmniPopup(action)
 endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-" Snippets
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-v>"
 
 " Alignment
 nmap ga <Plug>(EasyAlign)
