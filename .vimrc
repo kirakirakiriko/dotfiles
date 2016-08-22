@@ -57,11 +57,16 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'Valloric/YouCompleteMe'
 "Typescript
 Plugin 'Quramy/tsuquyomi'
+"Plugin 'clausreinke/typescript-tools.vim', { 'do': 'npm install'}
 Plugin 'leafgarland/typescript-vim'
 " Async Process Management
 Plugin 'Shougo/vimproc.vim'
 " Gulp Integration
 Plugin 'KabbAmine/gulp-vim'
+" Easier Grep Syntax
+Plugin 'vim-scripts/grep.vim'
+" Open Quickfixes in new Tab
+Plugin 'yssl/QFEnter'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -142,11 +147,11 @@ set nowritebackup
 set noswapfile
 
 "Tabs and Spaces
-set tabstop=8
-set softtabstop=4
+set tabstop=4
+set softtabstop=0
 set shiftwidth=4
 set shiftround
-set expandtab
+set noexpandtab
 
 "Searching
 set hlsearch
@@ -173,6 +178,7 @@ if !exists("g:ycm_semantic_triggers")
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
+let g:ycm_server_python_interpreter = '/usr/bin/python2'
 
 "Ultisnips/YCM Settings
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -185,6 +191,16 @@ let g:UltiSnipsEditSplit="vertical"
 
 "Gulp Settings
 let g:gv_return_2_prompt = 1
+
+"Language-Specific: Typescript
+let g:tsuquyomi_disable_default_mappings = 1
+nnoremap <Leader>p :TsuDefinition<CR>
+nnoremap <Leader>ü :TsuReferences<CR>
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+
+autocmd QuickFixCmdPost [^l]* nested cwindow
+autocmd QuickFixCmdPost    l* nested lwindow
 
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
