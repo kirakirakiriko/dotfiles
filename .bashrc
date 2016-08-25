@@ -17,7 +17,8 @@ source /usr/bin/virtualenvwrapper.sh
 
 export PATH=$PATH:/home/agamemnon/.gem/ruby/2.3.0/bin/
 
-
 export NVM_DIR="/home/agamemnon/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 PATH=$PATH:~/.git-tools
+
+source ~/.git-completion.bash
