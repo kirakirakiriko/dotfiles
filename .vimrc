@@ -43,6 +43,10 @@ Plugin 'honza/vim-snippets'
 Plugin 'othree/yajs.vim'
 " Javascript Libraries Syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
+" Javascript IDE functions
+Plugin 'ternjs/tern_for_vim'
+" Meteor JS
+Plugin 'slava/tern-meteor'
 " Nerdtree Git Flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
@@ -54,11 +58,11 @@ Plugin 'terryma/vim-smooth-scroll'
 " Easy Aligning
 Plugin 'junegunn/vim-easy-align'
 " AUtocompletion
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 "Typescript
-Plugin 'Quramy/tsuquyomi'
+"Plugin 'Quramy/tsuquyomi'
 "Plugin 'clausreinke/typescript-tools.vim', { 'do': 'npm install'}
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 " Async Process Management
 Plugin 'Shougo/vimproc.vim'
 " Gulp Integration
@@ -67,6 +71,14 @@ Plugin 'KabbAmine/gulp-vim'
 Plugin 'vim-scripts/grep.vim'
 " Open Quickfixes in new Tab
 Plugin 'yssl/QFEnter'
+" Tmux integration
+Plugin 'christoomey/vim-tmux-navigator'
+" Tmux Syntax Highlighting
+Plugin 'tmux-plugins/vim-tmux'
+" LaTeX
+Plugin 'lervag/vimtex'
+"Visual marks
+Plugin 'kshenoy/vim-signature'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -76,7 +88,7 @@ call vundle#end()
 filetype plugin indent on
 
 
-" Configure Airline
+" Airline
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -88,7 +100,13 @@ autocmd! bufwritepost .vimrc source %
 set clipboard=unnamed
 set bs=2
 
+"fix color bleed in tmux
+if &term =~ '256color'
+	set t_ut=
+endif
+
 let mapleader=","
+let maplocalleaer="-"
 
 "Movement
 noremap   <Up>     <NOP>
@@ -117,11 +135,12 @@ vnoremap < <gv
 vnoremap > >gv
 vnoremap . :normal .<CR>
 map <C-c> :nohl<CR>
-"noremap <C-j> :set nonumber<CR> :set norelativenumber<CR>
-"noremap <C-k> :set number<CR> :set relativenumber<CR>
 
 "Syntax Highlighting & Colors
 syntax on
+set noshowmode
+set hidden
+nnoremap <Leader>l :set list!<CR>
 
 "Mark Unneccessary Whitespace
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -130,6 +149,7 @@ set t_Co=256
 color monokai
 
 set laststatus=2
+
 "Line numbers
 set number
 set relativenumber
@@ -183,7 +203,7 @@ let g:ycm_server_python_interpreter = '/usr/bin/python2'
 "Ultisnips/YCM Settings
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = '<C-x><C-o>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -194,10 +214,10 @@ let g:gv_return_2_prompt = 1
 
 "Language-Specific: Typescript
 let g:tsuquyomi_disable_default_mappings = 1
-nnoremap <Leader>p :TsuDefinition<CR>
-nnoremap <Leader>ü :TsuReferences<CR>
 let g:tsuquyomi_disable_quickfix = 1
 let g:syntastic_typescript_checkers = ['tsuquyomi']
+autocmd FileType typescript nnoremap <buffer> <Leader>p :TsuDefinition<CR>
+autocmd FileType typescript nnoremap <buffer> <Leader>ü :TsuReferences<CR>
 
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
@@ -205,6 +225,13 @@ autocmd QuickFixCmdPost    l* nested lwindow
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
 let g:syntastic_javascript_checkers=['jshint']
+autocmd FileType javascript nnoremap <buffer> <Leader>p :TernDef<CR>
+autocmd FileType javascript nnoremap <buffer> <Leader>ü :TernRef<CR>
+autocmd FileType javascript nnoremap <buffer> <Leader>+ :TernDoc<CR>
+
+"Tern
+let g:tern_show_argument_hints = 'on_move'
+let g:tern#is_show_argument_hints_enabled = 1
 
 "Language-Specific: Python
 map <Leader>g :call RopeGotoDefinition()<CR>
@@ -243,5 +270,6 @@ let Tlist_Use_Right_Window = 1
 " NerdTree
 map <leader>a :NERDTreeToggle<CR>
 let g:ctrlp_map = '<c-a>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_max_depth=100
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
