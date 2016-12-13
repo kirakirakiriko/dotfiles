@@ -25,6 +25,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-surround'
 " Repeat functions provided by plugins
 Plugin 'tpope/vim-repeat'
+" Matching HTML Tags
+Plugin 'tmhedberg/matchit'
 " Snippets
 Plugin 'SirVer/ultisnips'
 " UltiSnips COmpatibility
@@ -44,9 +46,9 @@ Plugin 'othree/yajs.vim'
 " Javascript Libraries Syntax
 Plugin 'othree/javascript-libraries-syntax.vim'
 " Javascript IDE functions
-Plugin 'ternjs/tern_for_vim'
+" Plugin 'ternjs/tern_for_vim'
 " Meteor JS
-Plugin 'slava/tern-meteor'
+" Plugin 'slava/tern-meteor'
 " Nerdtree Git Flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
@@ -57,7 +59,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'terryma/vim-smooth-scroll'
 " Easy Aligning
 Plugin 'junegunn/vim-easy-align'
-" AUtocompletion
+" Autocompletion
 " Plugin 'Valloric/YouCompleteMe'
 "Typescript
 "Plugin 'Quramy/tsuquyomi'
@@ -65,8 +67,6 @@ Plugin 'junegunn/vim-easy-align'
 "Plugin 'leafgarland/typescript-vim'
 " Async Process Management
 Plugin 'Shougo/vimproc.vim'
-" Gulp Integration
-Plugin 'KabbAmine/gulp-vim'
 " Easier Grep Syntax
 Plugin 'vim-scripts/grep.vim'
 " Open Quickfixes in new Tab
@@ -79,6 +79,11 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'lervag/vimtex'
 "Visual marks
 Plugin 'kshenoy/vim-signature'
+"Parenthesis Matching
+Plugin 'raimondi/delimitmate'
+"Emmet
+Plugin 'mattn/emmet-vim'
+Plugin 'editorconfig/editorconfig-vim'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -97,9 +102,6 @@ let g:airline_right_alt_sep = ''
 let g:airline_theme = 'bubblegum'
 autocmd! bufwritepost .vimrc source %
 
-set clipboard=unnamed
-set bs=2
-
 "fix color bleed in tmux
 if &term =~ '256color'
 	set t_ut=
@@ -107,6 +109,8 @@ endif
 
 let mapleader=","
 let maplocalleaer="-"
+set clipboard=unnamed
+set bs=2
 
 "Movement
 noremap   <Up>     <NOP>
@@ -193,24 +197,44 @@ set ruler
 "Folding
 set nofoldenable
 
-"YouCompleteMe Settings
+"Emmet Remap
+let g:user_emmet_expandabbr_key = '<Tab>'
+
+"Parentheses autoClose
+let delimitMate_expand_cr = 1
+
+" Alignment
+nmap ga <Plug>(EasyAlign)
+
+" Taglist
+map <Leader><tab> :TlistToggle<CR>
+let Tlist_Use_Right_Window = 1
+
+" Statusline
+"set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
+
+" NerdTree
+map <leader>a :NERDTreeToggle<CR>
+let g:ctrlp_map = '<c-a>'
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_max_depth=100
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+"YouCompleteMe
 if !exists("g:ycm_semantic_triggers")
     let g:ycm_semantic_triggers = {}
 endif
 let g:ycm_semantic_triggers['typescript'] = ['.']
 let g:ycm_server_python_interpreter = '/usr/bin/python2'
-
-"Ultisnips/YCM Settings
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+"Ultisnips
 let g:SuperTabDefaultCompletionType = '<C-x><C-o>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
-
-"Gulp Settings
-let g:gv_return_2_prompt = 1
 
 "Language-Specific: Typescript
 let g:tsuquyomi_disable_default_mappings = 1
@@ -256,20 +280,3 @@ function! OmniPopup(action)
 endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
-
-" Alignment
-nmap ga <Plug>(EasyAlign)
-
-" Taglist
-map <Leader><tab> :TlistToggle<CR>
-let Tlist_Use_Right_Window = 1
-
-" Statusline
-"set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-
-" NerdTree
-map <leader>a :NERDTreeToggle<CR>
-let g:ctrlp_map = '<c-a>'
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_max_depth=100
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
