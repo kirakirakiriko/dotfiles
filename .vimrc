@@ -43,12 +43,13 @@ Plugin 'scrooloose/syntastic'
 Plugin 'honza/vim-snippets'
 " Javascript Syntax
 Plugin 'othree/yajs.vim'
+"Plugin 'jelera/vim-javascript-syntax'
 " Javascript Libraries Syntax
-Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'othree/javascript-libraries-syntax.vim'
 " Javascript IDE functions
-" Plugin 'ternjs/tern_for_vim'
+"Plugin 'ternjs/tern_for_vim'
 " Meteor JS
-" Plugin 'slava/tern-meteor'
+"Plugin 'slava/tern-meteor'
 " Nerdtree Git Flags
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " Python Unit Testing with py.test
@@ -83,7 +84,10 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'raimondi/delimitmate'
 "Emmet
 Plugin 'mattn/emmet-vim'
+" EditorConfig
 Plugin 'editorconfig/editorconfig-vim'
+" JSDoc
+Plugin 'heavenshell/vim-jsdoc'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
@@ -253,9 +257,14 @@ autocmd FileType javascript nnoremap <buffer> <Leader>p :TernDef<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>ü :TernRef<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>+ :TernDoc<CR>
 
-"Tern
-let g:tern_show_argument_hints = 'on_move'
-let g:tern#is_show_argument_hints_enabled = 1
+let g:jsdoc_enable_es6=1
+let g:jsdoc_allow_input_prompt=1
+let g:jsdoc_input_description=1
+let g:jsdoc_underscore_private=1
+let g:jsdoc_access_descriptions=2
+nmap <silent> <C-l> <Plug>(jsdoc)
+
+
 
 "Language-Specific: Python
 map <Leader>g :call RopeGotoDefinition()<CR>
