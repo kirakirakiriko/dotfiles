@@ -88,10 +88,14 @@ Plugin 'mattn/emmet-vim'
 Plugin 'editorconfig/editorconfig-vim'
 " JSDoc
 Plugin 'heavenshell/vim-jsdoc'
+" Purescript Syntax
+Plugin 'raichoo/purescript-vim'
+Plugin 'dodie/vim-disapprove-deep-indentation'
 
 " ColorSchemes
 Plugin 'sickill/vim-monokai'
 Plugin 'baskerville/bubblegum'
+
 
 call vundle#end()
 filetype plugin indent on
@@ -130,11 +134,14 @@ noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-y> :call smooth_scroll#down(5, 0, 1)<CR>
 noremap <silent> <c-e> :call smooth_scroll#up(5, 0, 1)<CR>
 
+let g:tmux_navigator_no_mappings = 1
 
-map <c-j> <c-w>j
-map <c-h> <c-w>h
-map <c-k> <c-w>k
-map <c-l> <c-w>l
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+
+
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
 map <Leader>s :sort<CR>
@@ -262,8 +269,6 @@ let g:jsdoc_allow_input_prompt=1
 let g:jsdoc_input_description=1
 let g:jsdoc_underscore_private=1
 let g:jsdoc_access_descriptions=2
-nmap <silent> <C-l> <Plug>(jsdoc)
-
 
 
 "Language-Specific: Python
@@ -289,3 +294,4 @@ function! OmniPopup(action)
 endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+
