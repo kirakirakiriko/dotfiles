@@ -11,6 +11,7 @@ alias c='git commit -m'
 alias a='git add'
 alias diff='git diff'
 alias finds='find . -name'
+alias clip='xclip -selection c'
 
 # Fix Neovim C-H mapping
 infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
