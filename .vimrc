@@ -182,11 +182,11 @@ set nowritebackup
 set noswapfile
 
 "Tabs and Spaces
-set tabstop=4
+set tabstop=2
 set softtabstop=0
-set shiftwidth=4
+set shiftwidth=2
 set shiftround
-set noexpandtab
+set expandtab
 
 "Searching
 set hlsearch
@@ -259,7 +259,17 @@ autocmd QuickFixCmdPost    l* nested lwindow
 
 "Language-Specific: Javascript
 let g:used_javascript_libs= 'angularjs,angularui,jquery,underscore'
-let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 autocmd FileType javascript nnoremap <buffer> <Leader>p :TernDef<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>ü :TernRef<CR>
 autocmd FileType javascript nnoremap <buffer> <Leader>+ :TernDoc<CR>
