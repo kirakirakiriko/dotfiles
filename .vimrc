@@ -38,7 +38,7 @@ Plugin 'tmux-plugins/vim-tmux'                 " Tmux Syntax Highlighting
 
 "   Syntaxes
 "  -------------------------------------------------------🌸
-Plugin 'scrooloose/syntastic'                  " Syntax Checking
+Plugin 'w0rp/ale'                              " Syntax Checking
 Plugin 'othree/yajs.vim'                       " JS
 Plugin 'heavenshell/vim-jsdoc'                 " JSDoc Helper
 Plugin 'othree/html5.vim'                      " HTML5
@@ -53,7 +53,9 @@ Plugin 'raichoo/purescript-vim'                " Purescript
 "   Color Schemes
 "  -------------------------------------------------------🌸
 Plugin 'sickill/vim-monokai'
-Plugin 'baskerville/bubblegum'
+Plugin 'mbbill/vim-seattle'
+Plugin 'pbrisbin/vim-colors-off'
+Plugin 'roosta/vim-srcery'
 
 "   Utils and Nice-to-haves
 "  -------------------------------------------------------🌸
@@ -132,7 +134,7 @@ set splitright               " Open splits to the right by default
 
 syntax on         " Syntax highlighting
 set t_Co=256      " 256 Color mode, corresponds to xterm-256color
-color monokai     " Color Scheme
+color srcery
 
 
 
@@ -202,6 +204,7 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_theme = 'bubblegum'
+let g:airline_section_b = '%{ALEGetStatusLine()}'
 
 "   TagList
 "  -------------------------------------------------------🌸
@@ -233,17 +236,6 @@ let g:UltiSnipsEditSplit="vertical"
 "   SuperTab
 "  -------------------------------------------------------🌸
 let g:SuperTabDefaultCompletionType = '<C-x><C-o>'
-
-
-"   Syntastic
-"  -------------------------------------------------------🌸
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
 "   Easy Align
 "  -------------------------------------------------------🌸
@@ -305,6 +297,6 @@ autocmd! bufwritepost .vimrc source % " Reload the config, when saving vimrc
 
 " Fix color bleed in tmux
 if &term =~ '256color'
-	set t_ut=
+  set t_ut=
 endif
 
