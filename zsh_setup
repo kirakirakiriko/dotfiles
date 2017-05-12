@@ -1,0 +1,4 @@
+git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+
+# copy config file
+cp .zshrc ~/.zshrc
