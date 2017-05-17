@@ -36,6 +36,16 @@ fi
 
 ZSH_TMUX_AUTOSTART=true
 
+# Bind home, end and del keys
+bindkey '\e[1~'   beginning-of-line
+bindkey '\e[H'    beginning-of-line
+bindkey '\eOH'    beginning-of-line
+bindkey '\e[2~'   overwrite-mode
+bindkey '\e[3~'   delete-char
+bindkey '\e[4~'   end-of-line
+bindkey '\e[F'    end-of-line
+bindkey '\eOF'    end-of-line
+
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
