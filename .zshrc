@@ -30,6 +30,7 @@ zgen load akoenig/gulp.plugin.zsh
 zgen load kennethreitz/autoenv         # Automatically execute .env when cd'ing into directory
 zgen oh-my-zsh plugins/catimg          # Use cat in terminal to show image
 zgen oh-my-zsh plugins/autojump        # Quick jumping to frequently used directories
+zgen oh-my-zsh themes/robbyrussell
 
 zgen save
 fi
@@ -56,4 +57,8 @@ alias finds='find . -name'
 alias clip='xclip -selection c'
 eval "$(hub alias -s)"
 
-PROMPT="λ "
+precmd () {
+  tmux set -qg status-left "#[fg=colour232,bg=colour197] #S #[fg=colour197,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] $(pwd | sed "s/\/home\/hephaistos/~/") #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour121,bg=colour235]  $(~/.tmux/scripts/git_status.sh)  #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]"
+}
+
+PROMPT="%{$fg[red]%}λ "
