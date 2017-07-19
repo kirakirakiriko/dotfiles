@@ -297,6 +297,6 @@ autocmd! bufwritepost .vimrc source % " Reload the config, when saving vimrc
 
 " Fix color bleed in tmux
 if &term =~ '256color'
-set t_ut=
+  set t_ut=
 endif
 
