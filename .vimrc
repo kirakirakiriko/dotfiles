@@ -22,13 +22,12 @@ Plugin 'vim-airline/vim-airline-themes'        " Color Schemes for Statusline
 Plugin 'editorconfig/editorconfig-vim'         " Use EditorConfig if available
 Plugin 'tpope/vim-surround'                    " Adds surroundings as text object
 Plugin 'scrooloose/nerdtree'                   " Filebrowser
-Plugin 'Xuyuanp/nerdtree-git-plugin'           " Git Flags for Nerdtree
 
 "   Code Snippets
 "  -------------------------------------------------------🌸
-Plugin 'SirVer/ultisnips'                      " Code Snippets
-Plugin 'honza/vim-snippets'                    " Collection of Snippets
-Plugin 'ervandew/supertab'                     " Tab key functionality e.g. for Ultisnips
+"Plugin 'SirVer/ultisnips'                      " Code Snippets
+"Plugin 'honza/vim-snippets'                    " Collection of Snippets
+"Plugin 'ervandew/supertab'                     " Tab key functionality e.g. for Ultisnips
 
 "   Technical Stuff
 "  -------------------------------------------------------🌸
@@ -44,41 +43,45 @@ Plugin 'heavenshell/vim-jsdoc'                 " JSDoc Helper
 Plugin 'othree/html5.vim'                      " HTML5
 Plugin 'hail2u/vim-css3-syntax'                " CSS3
 Plugin 'wavded/vim-stylus'                     " Stylus
-Plugin 'klen/python-mode'                      " Python
-Plugin 'alfredodeza/pytest.vim'                " Python Unit Testing with py.test
-Plugin 'tell-k/vim-autopep8'                   " Python PEP8 Code Formatting
+"Plugin 'klen/python-mode'                      " Python
+"Plugin 'alfredodeza/pytest.vim'                " Python Unit Testing with py.test
+"Plugin 'tell-k/vim-autopep8'                   " Python PEP8 Code Formatting
 Plugin 'lervag/vimtex'                         " LaTeX
-Plugin 'raichoo/purescript-vim'                " Purescript
-Plugin 'ap/vim-css-color'                      " Highlight colors in css
+"Plugin 'raichoo/purescript-vim'                " Purescript
+"Plugin 'ap/vim-css-color'                      " Highlight colors in css
+
+"   Autocompletion
+"  -------------------------------------------------------🌸
+Plugin 'Shougo/deoplete.nvim'                  " Autocompletion engine
+Plugin 'carlitux/deoplete-ternjs'              " Autocompletion for JS using tern - needs tern global
 
 "   Color Schemes
 "  -------------------------------------------------------🌸
 Plugin 'sickill/vim-monokai'
-Plugin 'mbbill/vim-seattle'
-Plugin 'pbrisbin/vim-colors-off'
-Plugin 'roosta/vim-srcery'
+"Plugin 'mbbill/vim-seattle'
+"Plugin 'pbrisbin/vim-colors-off'
+"Plugin 'roosta/vim-srcery'
 
 "   Utils and Nice-to-haves
 "  -------------------------------------------------------🌸
-Plugin 'taglist.vim'                           " Outline variable and functions
+"Plugin 'taglist.vim'                           " Outline variable and functions
 Plugin 'tpope/vim-fugitive'                    " Git Integration
 Plugin 'ntpeters/vim-better-whitespace'        " Whitespace detection and stripping
 Plugin 'tpope/vim-repeat'                      " Repeat functions provided by plugins
-Plugin 'terryma/vim-smooth-scroll'             " Smooth Scrolling
+"Plugin 'terryma/vim-smooth-scroll'             " Smooth Scrolling
 Plugin 'junegunn/vim-easy-align'               " Easy text aligning
 Plugin 'raimondi/delimitmate'                  " Autoinsert Parentheses, brackets, etc.
 Plugin 'kshenoy/vim-signature'                 " Visualize marks at the left side
 Plugin 'vim-scripts/grep.vim'                  " Easier Grep Syntax
 Plugin 'yssl/QFEnter'                          " Open Quickfixes in new Tab
-Plugin 'mattn/emmet-vim'                       " Emmet HTML Quick Scaffolding
+"Plugin 'mattn/emmet-vim'                       " Emmet HTML Quick Scaffolding
 Plugin 'tmhedberg/matchit'                     " HTML Tags as text object
 Plugin 'dodie/vim-disapprove-deep-indentation' " Disapproves nesting ಠ_ಠ
-Plugin 'joeytwiddle/sexy_scroller.vim'         " Smooth Scrolling
+"Plugin 'joeytwiddle/sexy_scroller.vim'         " Smooth Scrolling
 Plugin 'terryma/vim-multiple-cursors'          " Multiple Cursors like in Sublime Text
 Plugin 'scrooloose/nerdcommenter'              " Easy commenting with <leader>c[ csm]
 Plugin 'airblade/vim-gitgutter'                " Git Diff Signs on left margin
-Plugin 'chiel92/vim-autoformat'                " Automatic formatting
-
+"Plugin 'chiel92/vim-autoformat'                " Automatic formatting
 
 call vundle#end()
 
@@ -132,7 +135,12 @@ set smartcase                " Case sensitive searching, when an uppercase lette
 set splitbelow               " Open splits below by default
 set splitright               " Open splits to the right by default
 
-
+"   Netrw
+"  -------------------------------------------------------🌸
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 3
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
 
 "  -------------------------------------------------------------------🌸
 "   Visuals
@@ -187,6 +195,9 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>< :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>> :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
 
+" NerdTree
+map <leader>a :NERDTreeToggle<CR>
+
 
 
 "  -------------------------------------------------------------------🌸
@@ -210,7 +221,6 @@ let Tlist_Use_Right_Window = 1
 
 "   NerdTree
 "  -------------------------------------------------------🌸
-map <leader>a :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "   DelimitMate
@@ -246,6 +256,26 @@ let g:SexyScroller_ScrollTime = 20
 "  -------------------------------------------------------🌸
 autocmd BufWritePre *.js[x] :Autoformat
 
+"   ALE
+"  -------------------------------------------------------🌸
+let g:ale_fixers = {
+\ 'javascript': [
+\   'eslint',
+\ ],
+\}
+
+nmap <A-L> :ALEFix<CR>
+let g:ale_echo_msg_error_str = '過ち'
+let g:ale_echo_msg_warning_str = '断り'
+let g:ale_lint_delay = 100
+let g:ale_statusline_format = ['%d 過ち', '%d 断り', '大丈夫']
+
+"   Deoplete
+"  -------------------------------------------------------🌸
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#ternjs#docs = 1
+let g:deoplete#sources#ternjs#case_insensitive = 1
+
 
 "  -------------------------------------------------------------------🌸
 "   Language Specific
@@ -253,8 +283,7 @@ autocmd BufWritePre *.js[x] :Autoformat
 
 "   Javascript
 "  -------------------------------------------------------🌸
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+let g:ale_javascript_eslint_use_global = 1
 
 let g:jsdoc_enable_es6=1
 let g:jsdoc_allow_input_prompt=1
@@ -299,4 +328,3 @@ autocmd! bufwritepost .vimrc source % " Reload the config, when saving vimrc
 if &term =~ '256color'
   set t_ut=
 endif
-
