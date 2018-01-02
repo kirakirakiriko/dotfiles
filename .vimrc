@@ -22,12 +22,16 @@ Plugin 'vim-airline/vim-airline-themes'        " Color Schemes for Statusline
 Plugin 'editorconfig/editorconfig-vim'         " Use EditorConfig if available
 Plugin 'tpope/vim-surround'                    " Adds surroundings as text object
 Plugin 'scrooloose/nerdtree'                   " Filebrowser
+Plugin 'easymotion/vim-easymotion'             " Vimium like navigation
+Plugin 'haya14busa/incsearch.vim'              " Highlight incremental search
+Plugin 'haya14busa/incsearch-easymotion.vim'   " Easymotion integration for incsearch
+Plugin 'haya14busa/incsearch-fuzzy.vim'        " Incremental fuzzy search
 
 "   Code Snippets
 "  -------------------------------------------------------🌸
-"Plugin 'SirVer/ultisnips'                      " Code Snippets
-"Plugin 'honza/vim-snippets'                    " Collection of Snippets
-"Plugin 'ervandew/supertab'                     " Tab key functionality e.g. for Ultisnips
+Plugin 'SirVer/ultisnips'                      " Code Snippets
+Plugin 'honza/vim-snippets'                    " Collection of Snippets
+Plugin 'ervandew/supertab'                     " Tab key functionality e.g. for Ultisnips
 
 "   Technical Stuff
 "  -------------------------------------------------------🌸
@@ -73,6 +77,7 @@ Plugin 'junegunn/vim-easy-align'               " Easy text aligning
 Plugin 'raimondi/delimitmate'                  " Autoinsert Parentheses, brackets, etc.
 Plugin 'kshenoy/vim-signature'                 " Visualize marks at the left side
 Plugin 'vim-scripts/grep.vim'                  " Easier Grep Syntax
+Plugin 'dkprice/vim-easygrep'                  " Grep with <leader>vv and <leader>vr
 Plugin 'yssl/QFEnter'                          " Open Quickfixes in new Tab
 "Plugin 'mattn/emmet-vim'                       " Emmet HTML Quick Scaffolding
 Plugin 'tmhedberg/matchit'                     " HTML Tags as text object
@@ -149,6 +154,19 @@ let g:netrw_winsize = 25
 syntax on         " Syntax highlighting
 set t_Co=256      " 256 Color mode, corresponds to xterm-256color
 color monokai
+
+hi Search ctermbg=green
+hi Search ctermfg=black
+
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade  Comment
+
+hi link EasyMotionTarget2First MatchParen
+hi link EasyMotionTarget2Second MatchParen
+
+hi link EasyMotionMoveHL Search
+hi link EasyMotionIncSearch Search
+
 
 
 
@@ -252,10 +270,6 @@ nmap ga <Plug>(EasyAlign)
 "  -------------------------------------------------------🌸
 let g:SexyScroller_ScrollTime = 20
 
-"   Autoformat
-"  -------------------------------------------------------🌸
-autocmd BufWritePre *.js[x] :Autoformat
-
 "   ALE
 "  -------------------------------------------------------🌸
 let g:ale_fixers = {
@@ -275,6 +289,20 @@ let g:ale_statusline_format = ['%d 過ち', '%d 断り', '大丈夫']
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#ternjs#docs = 1
 let g:deoplete#sources#ternjs#case_insensitive = 1
+
+"   Incsearch / Easymotion
+"  -------------------------------------------------------🌸
+function! s:config_easyfuzzymotion(...) abort
+  return extend(copy({
+  \   'converters': [incsearch#config#fuzzyword#converter()],
+  \   'modules': [incsearch#config#easymotion#module({'overwin': 1})],
+  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+  \   'is_expr': 0,
+  \   'is_stay': 1
+  \ }), get(a:, 1, {}))
+endfunction
+
+noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 
 "  -------------------------------------------------------------------🌸
