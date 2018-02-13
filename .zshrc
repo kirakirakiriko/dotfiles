@@ -45,6 +45,17 @@ bindkey '\e[4~'   end-of-line
 bindkey '\e[F'    end-of-line
 bindkey '\eOF'    end-of-line
 
+function pa() {
+    git add .
+    if [ -n "$1" ]
+    then
+        git commit -m "$1"
+    else
+        break
+    fi
+    git push
+}
+
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 alias ls='ls -l --color=auto'
