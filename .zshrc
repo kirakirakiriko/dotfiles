@@ -52,6 +52,7 @@ alias lisa='ls -lisah'
 alias st='git status'
 alias c='git commit -m'
 alias a='git add'
+alias p='git push'
 alias diff='git diff'
 alias finds='find . -name'
 alias clip='xclip -selection c'
@@ -62,3 +63,5 @@ precmd () {
 }
 
 PROMPT="%{$fg[red]%}λ "
+
+ulimit -n 2048
