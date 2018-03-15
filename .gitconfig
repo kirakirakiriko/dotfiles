@@ -1,0 +1,7 @@
+[includeIf "gitdir:~/dev/me/"]
+  path = .gitconfig-priv
+[includeIf "gitdir:~/dev/s2/"]
+  path = .gitconfig-work
+[user]
+	email = pygmalionpolymorph@gmail.com
+	name = PygmalionPolymorph
