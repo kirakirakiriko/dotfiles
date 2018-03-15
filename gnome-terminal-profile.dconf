@@ -1,0 +1,12 @@
+[/]
+foreground-color='rgb(243,243,243)'
+palette=['rgb(7,54,66)', 'rgb(255,0,95)', 'rgb(0,153,67)', 'rgb(224,227,11)', 'rgb(38,139,210)', 'rgb(211,54,130)', 'rgb(42,161,152)', 'rgb(238,232,213)', 'rgb(0,43,54)', 'rgb(216,19,92)', 'rgb(88,110,117)', 'rgb(101,123,131)', 'rgb(131,148,150)', 'rgb(108,113,196)', 'rgb(147,161,161)', 'rgb(253,246,227)']
+custom-command='tmux'
+default-size-columns=132
+default-size-rows=43
+cursor-shape='underline'
+use-custom-command=true
+use-theme-colors=false
+use-system-font=true
+font='Fira Code 10'
+background-color='rgb(38,38,38)'
