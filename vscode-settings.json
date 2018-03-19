@@ -1,0 +1,89 @@
+{
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+    "keyboard.dispatch": "keyCode",
+    "vim.leader": ",",
+    "vim.visualstar": true,
+    "vim.cmdLineInitialColon": true,
+    "vim.enableNeovim": true,
+    "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }, {
+      "before": ["<C-h>"],
+      "after": ["<C-W>", "h"]
+    }
+    ],
+    "vim.otherModesKeyBindings": [
+    {
+      "before": ["<leader>", "n"],
+      "after": [],
+      "commands": [
+      {
+        "command": "workbench.action.previousEditorInGroup"
+      }
+      ]
+    }, {
+      "before": ["<leader>", "m"],
+      "after": [],
+      "commands": [
+      {
+        "command": "workbench.action.nextEditorInGroup"
+      }
+      ]
+    }, {
+      "before": ["<C-j>"],
+      "after": [],
+      "commands": [
+      {
+        "command": "workbench.action.terminal.focus"
+      }
+      ]
+    }, {
+      "before": ["<C-a>"],
+      "commands": [
+      {
+        "command": "workbench.action.quickOpen"
+      }
+      ]
+    }
+    ],
+    "workbench.colorTheme": "Monokai",
+    "stylusSupremacy.insertColons": false,
+    "stylusSupremacy.insertSemicolons": false,
+    "stylusSupremacy.insertBraces": false,
+    "stylusSupremacy.insertNewLineAroundImports": true,
+    "stylusSupremacy.insertNewLineAroundBlocks": true,
+    "stylusSupremacy.insertNewLineAroundProperties": false,
+    "stylusSupremacy.insertNewLineAroundOthers": true,
+    "stylusSupremacy.insertNewLineBetweenSelectors": true,
+    "stylusSupremacy.insertSpaceBeforeComment": true,
+    "stylusSupremacy.insertSpaceAfterComment": true,
+    "stylusSupremacy.insertSpaceAfterComma": true,
+    "stylusSupremacy.insertSpaceInsideParenthesis": false,
+    "stylusSupremacy.insertParenthesisAroundIfCondition": true,
+    "stylusSupremacy.insertNewLineBeforeElse": false,
+    "stylusSupremacy.insertLeadingZeroBeforeFraction": false,
+    "stylusSupremacy.quoteChar": "'",
+    "stylusSupremacy.sortProperties": "grouped",
+    "stylusSupremacy.alwaysUseImport": false,
+    "stylusSupremacy.alwaysUseNot": false,
+    "stylusSupremacy.alwaysUseAtBlock": false,
+    "stylusSupremacy.alwaysUseExtends": false,
+    "stylusSupremacy.alwaysUseNoneOverZero": false,
+    "stylusSupremacy.alwaysUseZeroWithoutUnit": true,
+    "stylusSupremacy.reduceMarginAndPaddingValues": true,
+    "workbench.startupEditor": "newUntitledFile",
+    "gitlens.advanced.messages": {
+      "suppressCommitHasNoPreviousCommitWarning": false,
+      "suppressCommitNotFoundWarning": false,
+      "suppressFileNotUnderSourceControlWarning": false,
+      "suppressGitVersionWarning": false,
+      "suppressLineUncommittedWarning": false,
+      "suppressNoRepositoryWarning": false,
+      "suppressUpdateNotice": false,
+      "suppressWelcomeNotice": true
+    },
+    "window.zoomLevel": 0,
+    "gitlens.keymap": "alternate"
+}
