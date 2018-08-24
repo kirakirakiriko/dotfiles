@@ -1,94 +1,84 @@
-set nocompatible " be iMproved, required
-filetype off     " required
+set nocompatible
+filetype off
 syntax off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+
+if dein#load_state('~/.cache/dein')
+ call dein#begin('~/.cache/dein')
+ call dein#add('~/.cache/dein')
+ call dein#add('wsdjeg/dein-ui.vim')
+
+  "  -------------------------------------------------------------------🌸
+  "   Plugins
+  "  -------------------------------------------------------------------🌸
+
+  "   Fundamentals
+  "  -------------------------------------------------------🌸
+  call dein#add('kien/ctrlp.vim')                        " Fuzzy Search
+  call dein#add('vim-airline/vim-airline')               " Statusline
+  call dein#add('vim-airline/vim-airline-themes')        " Color Schemes for Statusline
+  call dein#add('editorconfig/editorconfig-vim')         " Use EditorConfig if available
+  call dein#add('tpope/vim-surround')                    " Adds surroundings as text object
+  call dein#add('scrooloose/nerdtree')                   " Filebrowser
+  call dein#add('easymotion/vim-easymotion')             " Vimium like navigation
+  call dein#add('haya14busa/incsearch.vim')              " Highlight incremental search
+  call dein#add('haya14busa/incsearch-easymotion.vim')   " Easymotion integration for incsearch
+  call dein#add('haya14busa/incsearch-fuzzy.vim')        " Incremental fuzzy search
+
+  "   Code Snippets
+  "  -------------------------------------------------------🌸
+  call dein#add('SirVer/ultisnips')                      " Code Snippets
+  call dein#add('honza/vim-snippets')                    " Collection of Snippets
+  call dein#add('ervandew/supertab')                     " Tab key functionality e.g. for Ultisnips
+
+  "   Technical Stuff
+  "  -------------------------------------------------------🌸
+  call dein#add('christoomey/vim-tmux-navigator')        " Tmux window navigation
+  call dein#add('tmux-plugins/vim-tmux')                 " Tmux Syntax Highlighting
+
+  "   Syntaxes
+  "  -------------------------------------------------------🌸
+  call dein#add('w0rp/ale')                              " Syntax Checking
+  call dein#add('othree/yajs.vim')                       " JS
+  call dein#add('heavenshell/vim-jsdoc')                 " JSDoc Helper
+  call dein#add('othree/html5.vim')                      " HTML5
+  call dein#add('hail2u/vim-css3-syntax')                " CSS3
+  call dein#add('wavded/vim-stylus')                     " Stylus
+  call dein#add('lervag/vimtex')                         " LaTeX
+
+  "   Autocompletion
+  "  -------------------------------------------------------🌸
+  call dein#add('Shougo/deoplete.nvim')                  " Autocompletion engine
+  call dein#add('carlitux/deoplete-ternjs')              " Autocompletion for JS using tern - needs tern global
+
+  "   Color Schemes
+  "  -------------------------------------------------------🌸
+  call dein#add('sickill/vim-monokai')
+
+  "   Utils and Nice-to-haves
+  "  -------------------------------------------------------🌸
+  call dein#add('tpope/vim-fugitive')                    " Git Integration
+  call dein#add('ntpeters/vim-better-whitespace')        " Whitespace detection and stripping
+  call dein#add('tpope/vim-repeat')                      " Repeat functions provided by plugins
+  call dein#add('terryma/vim-smooth-scroll')             " Smooth Scrolling
+  call dein#add('junegunn/vim-easy-align')               " Easy text aligning
+  call dein#add('raimondi/delimitmate')                  " Autoinsert Parentheses, brackets, etc.
+  call dein#add('kshenoy/vim-signature')                 " Visualize marks at the left side
+  call dein#add('vim-scripts/grep.vim')                  " Easier Grep Syntax
+  call dein#add('dkprice/vim-easygrep')                  " Grep with <leader>vv and <leader>vr
+  call dein#add('yssl/QFEnter')                          " Open Quickfixes in new Tab
+  call dein#add('tmhedberg/matchit')                     " HTML Tags as text object
+  call dein#add('dodie/vim-disapprove-deep-indentation') " Disapproves nesting ಠ_ಠ
+  call dein#add('terryma/vim-multiple-cursors')          " Multiple Cursors like in Sublime Text
+  call dein#add('scrooloose/nerdcommenter')              " Easy commenting with <leader>c[ csm]
+  call dein#add('airblade/vim-gitgutter')                " Git Diff Signs on left margin
 
 
-
-"  -------------------------------------------------------------------🌸
-"   Plugins
-"  -------------------------------------------------------------------🌸
-
-"   Fundamentals
-"  -------------------------------------------------------🌸
-Plugin 'kien/ctrlp.vim'                        " Fuzzy Search
-Plugin 'vim-airline/vim-airline'               " Statusline
-Plugin 'vim-airline/vim-airline-themes'        " Color Schemes for Statusline
-Plugin 'editorconfig/editorconfig-vim'         " Use EditorConfig if available
-Plugin 'tpope/vim-surround'                    " Adds surroundings as text object
-Plugin 'scrooloose/nerdtree'                   " Filebrowser
-Plugin 'easymotion/vim-easymotion'             " Vimium like navigation
-Plugin 'haya14busa/incsearch.vim'              " Highlight incremental search
-Plugin 'haya14busa/incsearch-easymotion.vim'   " Easymotion integration for incsearch
-Plugin 'haya14busa/incsearch-fuzzy.vim'        " Incremental fuzzy search
-
-"   Code Snippets
-"  -------------------------------------------------------🌸
-Plugin 'SirVer/ultisnips'                      " Code Snippets
-Plugin 'honza/vim-snippets'                    " Collection of Snippets
-Plugin 'ervandew/supertab'                     " Tab key functionality e.g. for Ultisnips
-
-"   Technical Stuff
-"  -------------------------------------------------------🌸
-Plugin 'Shougo/vimproc.vim'                    " Async Process Management
-Plugin 'christoomey/vim-tmux-navigator'        " Tmux window navigation
-Plugin 'tmux-plugins/vim-tmux'                 " Tmux Syntax Highlighting
-
-"   Syntaxes
-"  -------------------------------------------------------🌸
-Plugin 'w0rp/ale'                              " Syntax Checking
-Plugin 'othree/yajs.vim'                       " JS
-Plugin 'heavenshell/vim-jsdoc'                 " JSDoc Helper
-Plugin 'othree/html5.vim'                      " HTML5
-Plugin 'hail2u/vim-css3-syntax'                " CSS3
-Plugin 'wavded/vim-stylus'                     " Stylus
-"Plugin 'klen/python-mode'                      " Python
-"Plugin 'alfredodeza/pytest.vim'                " Python Unit Testing with py.test
-"Plugin 'tell-k/vim-autopep8'                   " Python PEP8 Code Formatting
-Plugin 'lervag/vimtex'                         " LaTeX
-"Plugin 'raichoo/purescript-vim'                " Purescript
-"Plugin 'ap/vim-css-color'                      " Highlight colors in css
-
-"   Autocompletion
-"  -------------------------------------------------------🌸
-Plugin 'Shougo/deoplete.nvim'                  " Autocompletion engine
-Plugin 'carlitux/deoplete-ternjs'              " Autocompletion for JS using tern - needs tern global
-
-"   Color Schemes
-"  -------------------------------------------------------🌸
-Plugin 'sickill/vim-monokai'
-"Plugin 'mbbill/vim-seattle'
-"Plugin 'pbrisbin/vim-colors-off'
-"Plugin 'roosta/vim-srcery'
-
-"   Utils and Nice-to-haves
-"  -------------------------------------------------------🌸
-"Plugin 'taglist.vim'                           " Outline variable and functions
-Plugin 'tpope/vim-fugitive'                    " Git Integration
-Plugin 'ntpeters/vim-better-whitespace'        " Whitespace detection and stripping
-Plugin 'tpope/vim-repeat'                      " Repeat functions provided by plugins
-"Plugin 'terryma/vim-smooth-scroll'             " Smooth Scrolling
-Plugin 'junegunn/vim-easy-align'               " Easy text aligning
-Plugin 'raimondi/delimitmate'                  " Autoinsert Parentheses, brackets, etc.
-Plugin 'kshenoy/vim-signature'                 " Visualize marks at the left side
-Plugin 'vim-scripts/grep.vim'                  " Easier Grep Syntax
-Plugin 'dkprice/vim-easygrep'                  " Grep with <leader>vv and <leader>vr
-Plugin 'yssl/QFEnter'                          " Open Quickfixes in new Tab
-"Plugin 'mattn/emmet-vim'                       " Emmet HTML Quick Scaffolding
-Plugin 'tmhedberg/matchit'                     " HTML Tags as text object
-Plugin 'dodie/vim-disapprove-deep-indentation' " Disapproves nesting ಠ_ಠ
-"Plugin 'joeytwiddle/sexy_scroller.vim'         " Smooth Scrolling
-Plugin 'terryma/vim-multiple-cursors'          " Multiple Cursors like in Sublime Text
-Plugin 'scrooloose/nerdcommenter'              " Easy commenting with <leader>c[ csm]
-Plugin 'airblade/vim-gitgutter'                " Git Diff Signs on left margin
-"Plugin 'chiel92/vim-autoformat'                " Automatic formatting
-
-call vundle#end()
+  call dein#end()
+  call dein#save_state()
+endif
+filetype plugin indent on
 
 
 "  -------------------------------------------------------------------🌸
@@ -230,7 +220,9 @@ let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 let g:airline_theme = 'bubblegum'
-let g:airline_section_b = '%{ALEGetStatusLine()}'
+call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+let g:airline_section_b = airline#section#create_right(['ALE'])
 
 "   TagList
 "  -------------------------------------------------------🌸

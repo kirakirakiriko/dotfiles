@@ -1,2 +1,8 @@
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
+sh ./installer.sh ~/.cache/dein
+
+mkdir -p ~/.config/nvim
+cp init.vim ~/.config/nvim/init.vim
 cp .vimrc ~/.vimrc
+
+vim -c 'call dein#install()'
