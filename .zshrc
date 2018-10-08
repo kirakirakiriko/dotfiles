@@ -1,6 +1,6 @@
 source ~/.zgen/zgen.zsh
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/home/polymatheia/.gem/ruby/2.5.0/bin:$PATH
 export EDITOR=vim
 
 HYPHEN_INSENSITIVE="true"
@@ -59,12 +59,14 @@ function pa() {
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+alias vim='vim -S ~/.vimrc'
 alias ls='ls -l --color=auto'
 alias lisa='ls -lisah'
 alias st='git status'
 alias c='git commit -m'
 alias a='git add'
 alias p='git push'
+alias pu='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 alias pl='git pull'
 alias co='git checkout'
 alias diff='git diff'
@@ -79,3 +81,15 @@ precmd () {
 PROMPT="%{$fg[red]%}λ "
 
 ulimit -n 2048
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/sls.zsh ]] && . /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/sls.zshsource /usr/share/nvm/init-nvm.sh
+
+[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"                                                │
+source /usr/share/nvm/nvm.sh                                                                    │
+source /usr/share/nvm/bash_completion                                                           │
+source /usr/share/nvm/install-nvm-exec 
