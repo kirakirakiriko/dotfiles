@@ -82,14 +82,7 @@ PROMPT="%{$fg[red]%}λ "
 
 ulimit -n 2048
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/sls.zsh ]] && . /home/polymatheia/dev/s2/etc/skillgroup-functional-programming/2018-07-13_cart-services/cart-services-backend/node_modules/tabtab/.completions/sls.zshsource /usr/share/nvm/init-nvm.sh
-
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"                                                │
+export NVM_DIR="~/.nvm"                                                │
 source /usr/share/nvm/nvm.sh                                                                    │
 source /usr/share/nvm/bash_completion                                                           │
 source /usr/share/nvm/install-nvm-exec 
