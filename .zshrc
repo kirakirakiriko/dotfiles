@@ -1,5 +1,6 @@
 source ~/.zgen/zgen.zsh
 
+export NVM_DIR=~/.nvm
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/home/polymatheia/.gem/ruby/2.5.0/bin:$PATH
 export EDITOR=vim
 
@@ -72,6 +73,7 @@ alias co='git checkout'
 alias diff='git diff'
 alias finds='find . -name'
 alias clip='xclip -selection c'
+alias git-clear="git branch -vv | grep -e origin\/.*:\ gone | sed -r 's/([a-zA-Z0-9-]+).*/\1/' | xargs git branch -D"
 eval "$(hub alias -s)"
 
 precmd () {
@@ -82,7 +84,6 @@ PROMPT="%{$fg[red]%}λ "
 
 ulimit -n 2048
 
-export NVM_DIR="~/.nvm"                                                │
 source /usr/share/nvm/nvm.sh                                                                    │
 source /usr/share/nvm/bash_completion                                                           │
-source /usr/share/nvm/install-nvm-exec 
+source /usr/share/nvm/install-nvm-exec
