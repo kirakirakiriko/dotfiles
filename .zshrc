@@ -1,5 +1,8 @@
+if [ "$TMUX" = "" ]; then /usr/local/bin/tmux -u; fi
 source ~/.zgen/zgen.zsh
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export NVM_DIR=~/.nvm
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/home/polymatheia/.gem/ruby/2.5.0/bin:$PATH
 export EDITOR=vim
@@ -31,7 +34,6 @@ zgen load akoenig/gulp.plugin.zsh
 # Utils and Nice-to-haves
 # zgen load kennethreitz/autoenv         # Automatically execute .env when cd'ing into directory
 zgen oh-my-zsh plugins/catimg          # Use cat in terminal to show image
-zgen oh-my-zsh plugins/autojump        # Quick jumping to frequently used directories
 zgen oh-my-zsh themes/robbyrussell
 
 zgen save
@@ -74,7 +76,6 @@ alias diff='git diff'
 alias finds='find . -name'
 alias clip='xclip -selection c'
 alias git-clear="git branch -vv | grep -e origin\/.*:\ gone | sed -r 's/([a-zA-Z0-9-]+).*/\1/' | xargs git branch -D"
-eval "$(hub alias -s)"
 
 precmd () {
   tmux set -qg status-left "#[fg=colour232,bg=colour197] #S #[fg=colour197,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] $(pwd | sed "s/\/home\/hephaistos/~/") #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour121,bg=colour235]  $(~/.tmux/scripts/git_status.sh)  #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]"
@@ -83,7 +84,3 @@ precmd () {
 PROMPT="%{$fg[red]%}λ "
 
 ulimit -n 2048
-
-source /usr/share/nvm/nvm.sh                                                                    │
-source /usr/share/nvm/bash_completion                                                           │
-source /usr/share/nvm/install-nvm-exec

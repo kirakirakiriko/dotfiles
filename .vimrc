@@ -28,9 +28,9 @@ if dein#load_state('~/.cache/dein')
 
   "   Code Snippets
   "  -------------------------------------------------------🌸
-  call dein#add('SirVer/ultisnips')                      " Code Snippets
-  call dein#add('honza/vim-snippets')                    " Collection of Snippets
-  call dein#add('ervandew/supertab')                     " Tab key functionality e.g. for Ultisnips
+  " call dein#add('SirVer/ultisnips')                      " Code Snippets
+  " call dein#add('honza/vim-snippets')                    " Collection of Snippets
+  " call dein#add('ervandew/supertab')                     " Tab key functionality e.g. for Ultisnips
 
   "   Technical Stuff
   "  -------------------------------------------------------🌸
