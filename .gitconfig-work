@@ -1,5 +1,0 @@
-[user]
-  email = nicas-kilian.heydorn@sinnerschrader.com
-  name = Nicas Kilian Heydorn
-[core]
-  pager = diff-so-fancy | less --tabs=4 -RFX

@@ -1,7 +1,5 @@
-[includeIf "gitdir:~/dev/me/"]
-  path = .gitconfig-priv
-[includeIf "gitdir:~/dev/s2/"]
-  path = .gitconfig-work
+[core]
+  pager = diff-so-fancy | less --tabs=4 -RFX
 [user]
 	email = pygmalionpolymorph@gmail.com
 	name = PygmalionPolymorph

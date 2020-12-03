@@ -1,8 +1,0 @@
-mkdir -p ~/.config
-ln -s ~/.vim ~/.config/nvim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
-
-# Make Ctrl-H for split switching work
-# See https://github.com/neovim/neovim/issues/2048 for details
-infocmp $TERM | sed 's/kbs=^[hH]/kbs=\\177/' > $TERM.ti
-tic $TERM.ti

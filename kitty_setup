@@ -1,6 +1,0 @@
-echo "[SETUP] Installing kitty..."
-sudo pacman -S kitty
-mkdir -p ~/.config/kitty
-cp -R kitty.conf ~/.config/kitty/kitty.conf
-echo "[SETUP] Kitty successfully installed!"
-echo "[SETUP] You may want to set a shortcut to kitty."

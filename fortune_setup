@@ -1,4 +1,0 @@
-sudo pacman -S cowsay fortune-mod
-gem install lolcat
-echo "export PATH=\$PATH:~/.gem/ruby/2.3.0/bin" >> ~/.bashrc
-echo "fortune | cowsay -f \$(find /usr/share/cows -type f | shuf -n 1) | lolcat" >> ~/.bashrc

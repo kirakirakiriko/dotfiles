@@ -5,7 +5,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export NVM_DIR=~/.nvm
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:/home/polymatheia/.gem/ruby/2.5.0/bin:$PATH
-export EDITOR=vim
+export EDITOR=nvim
 
 HYPHEN_INSENSITIVE="true"
 ENABLE_CORRECTION="true"
@@ -62,8 +62,7 @@ function pa() {
 
 export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-alias vim='vim -S ~/.vimrc'
-alias ls='ls -l --color=auto'
+alias vim='nvim'
 alias lisa='ls -lisah'
 alias st='git status'
 alias c='git commit -m'
@@ -76,10 +75,6 @@ alias diff='git diff'
 alias finds='find . -name'
 alias clip='xclip -selection c'
 alias git-clear="git branch -vv | grep -e origin\/.*:\ gone | sed -r 's/([a-zA-Z0-9-]+).*/\1/' | xargs git branch -D"
-
-precmd () {
-  tmux set -qg status-left "#[fg=colour232,bg=colour197] #S #[fg=colour197,bg=colour238,nobold,nounderscore,noitalics]#[fg=colour222,bg=colour238] $(pwd | sed "s/\/home\/hephaistos/~/") #[fg=colour238,bg=colour235,nobold,nounderscore,noitalics]#[fg=colour121,bg=colour235]  $(~/.tmux/scripts/git_status.sh)  #[fg=colour235,bg=colour235,nobold,nounderscore,noitalics]"
-}
 
 PROMPT="%{$fg[red]%}λ "
 
