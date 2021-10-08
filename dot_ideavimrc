@@ -1,0 +1,13 @@
+set noerrorbells
+set visualbell
+set relativenumber
+set clipboard+=unnamed
+set surround
+
+let mapleader=","
+map <Leader>n <esc>:tabprevious<CR>
+map <Leader>m <esc>:tabnext<CR>
+
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+

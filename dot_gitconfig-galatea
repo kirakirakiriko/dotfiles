@@ -1,0 +1,5 @@
+[core]
+  sshCommand = "ssh -i ~/.ssh/id_rsa_galatea -F /dev/null"
+[user]
+	email = galateapolymorph@gmail.com
+	name = GalateaPolymorph

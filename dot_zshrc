@@ -92,3 +92,4 @@ ulimit -n 2048
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+[ -f "/Users/pygmalionpolymorph/.ghcup/env" ] && source "/Users/pygmalionpolymorph/.ghcup/env" # ghcup-env
